@@ -142,14 +142,23 @@ export default function TestimonialsSection() {
   return (
     <section 
       id="testimonials" 
-      className="py-28 bg-gradient-to-b from-gray-50 to-gray-100" 
+      className="py-28 bg-gradient-to-b from-white via-gray-50 to-white relative overflow-hidden" 
       ref={sectionRef}
     >
-      <div className="container mx-auto px-4 md:px-10 max-w-7xl">
+      {/* Background decoration */}
+      <div className="absolute top-0 left-0 w-full h-full opacity-5">
+        <div className="absolute top-20 right-10 w-96 h-96 bg-yellow-400 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-20 left-10 w-80 h-80 bg-yellow-300 rounded-full filter blur-3xl"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 md:px-10 max-w-7xl relative z-10">
         {/* Header */}
         <div className={`text-center mb-20 transition-all duration-700 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">What Our Clients Say</h2>
-          <div className="w-32 h-2 bg-yellow-500 mx-auto mb-6"></div>
+          <div className="inline-block mb-4">
+            <span className="bg-yellow-100 text-yellow-700 px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider">Testimonials</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6">What Our Clients Say</h2>
+          <div className="w-32 h-1.5 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mb-6 rounded-full"></div>
           <p className="text-gray-600 max-w-3xl mx-auto text-xl">
             Trusted by companies worldwide for our commitment to quality and sustainability
           </p>
@@ -157,13 +166,13 @@ export default function TestimonialsSection() {
 
         {/* Featured testimonial */}
         <div className={`mb-20 transition-all duration-700 delay-200 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="relative bg-white rounded-xl shadow-2xl overflow-hidden">
+          <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
             {/* Content */}
             <div className="grid grid-cols-1 lg:grid-cols-5">
               {/* Left column - Image (on larger screens) */}
-              <div className="hidden lg:block lg:col-span-2 relative bg-yellow-50">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative w-3/4 h-3/4 overflow-hidden rounded-xl">
+              <div className="hidden lg:block lg:col-span-2 relative bg-gradient-to-br from-yellow-50 to-yellow-100">
+                <div className="absolute inset-0 flex items-center justify-center p-8">
+                  <div className="relative w-full h-full overflow-hidden rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500">
                     {currentTestimonial.image ? (
                       <Image 
                         src={currentTestimonial.image} 
@@ -172,7 +181,7 @@ export default function TestimonialsSection() {
                         className="object-cover"
                       />
                     ) : (
-                      <div className="w-full h-full bg-yellow-500 flex items-center justify-center text-white text-3xl font-bold">
+                      <div className="w-full h-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center text-white text-5xl font-bold">
                         {currentTestimonial.name.charAt(0)}
                       </div>
                     )}
@@ -180,8 +189,13 @@ export default function TestimonialsSection() {
                 </div>
                 
                 {/* Decorative elements */}
-                <div className="absolute bottom-8 left-8">
-                  <svg className="w-20 h-20 text-yellow-200" fill="currentColor" viewBox="0 0 24 24">
+                <div className="absolute bottom-8 left-8 opacity-20">
+                  <svg className="w-24 h-24 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                  </svg>
+                </div>
+                <div className="absolute top-8 right-8 opacity-10">
+                  <svg className="w-32 h-32 text-yellow-500" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                   </svg>
                 </div>
@@ -215,14 +229,19 @@ export default function TestimonialsSection() {
                 
                 {/* Company badge */}
                 <div className="mb-8">
-                  <div className="inline-block bg-yellow-50 px-6 py-3 rounded-lg text-yellow-700 font-bold text-lg">
+                  <div className="inline-block bg-gradient-to-r from-yellow-50 to-yellow-100 px-6 py-3 rounded-xl text-yellow-700 font-bold text-lg shadow-md border border-yellow-200">
                     {currentTestimonial.company}
                   </div>
                 </div>
                 
                 {/* Quote */}
                 <div className="mb-8 relative">
-                  <p className="text-2xl text-gray-700 leading-relaxed">"{currentTestimonial.quote}"</p>
+                  <div className="absolute -left-4 -top-2 text-yellow-300 opacity-50">
+                    <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                    </svg>
+                  </div>
+                  <p className="text-2xl md:text-3xl text-gray-700 leading-relaxed font-light italic">"{currentTestimonial.quote}"</p>
                 </div>
                 
                 {/* Rating stars */}
@@ -239,23 +258,23 @@ export default function TestimonialsSection() {
             </div>
             
             {/* Navigation controls (positioned outside the card for better visibility) */}
-            <div className="absolute top-1/2 left-4 right-4 -translate-y-1/2 flex justify-between pointer-events-none">
+            <div className="absolute top-1/2 left-4 right-4 -translate-y-1/2 flex justify-between pointer-events-none z-30">
               <button 
                 onClick={prevSlide}
-                className="w-14 h-14 rounded-full bg-white shadow-xl flex items-center justify-center text-gray-800 transition-all hover:bg-yellow-500 hover:text-white pointer-events-auto focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50"
+                className="group w-16 h-16 rounded-full bg-white shadow-2xl flex items-center justify-center text-gray-800 transition-all hover:bg-gradient-to-r hover:from-yellow-500 hover:to-yellow-600 hover:text-white pointer-events-auto focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 transform hover:scale-110"
                 aria-label="Previous testimonial"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                <svg className="w-7 h-7 transform group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
               <button 
                 onClick={nextSlide}
-                className="w-14 h-14 rounded-full bg-white shadow-xl flex items-center justify-center text-gray-800 transition-all hover:bg-yellow-500 hover:text-white pointer-events-auto focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50"
+                className="group w-16 h-16 rounded-full bg-white shadow-2xl flex items-center justify-center text-gray-800 transition-all hover:bg-gradient-to-r hover:from-yellow-500 hover:to-yellow-600 hover:text-white pointer-events-auto focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 transform hover:scale-110"
                 aria-label="Next testimonial"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <svg className="w-7 h-7 transform group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                 </svg>
               </button>
             </div>
@@ -280,21 +299,41 @@ export default function TestimonialsSection() {
         
         {/* Testimonial stats */}
         <div className={`grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 transition-all duration-700 delay-300 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="bg-white rounded-lg p-8 text-center shadow-xl hover:shadow-2xl transition-shadow">
-            <p className="text-4xl md:text-5xl font-bold text-yellow-500 mb-3">98%</p>
-            <p className="text-gray-700 text-base font-medium">Client Satisfaction</p>
+          <div className="group bg-white rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2 border border-gray-100 hover:border-yellow-200">
+            <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl mx-auto mb-4 flex items-center justify-center transform group-hover:scale-110 transition-transform">
+              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+              </svg>
+            </div>
+            <p className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-yellow-500 to-yellow-600 bg-clip-text text-transparent mb-3">98%</p>
+            <p className="text-gray-700 text-base font-semibold">Client Satisfaction</p>
           </div>
-          <div className="bg-white rounded-lg p-8 text-center shadow-xl hover:shadow-2xl transition-shadow">
-            <p className="text-4xl md:text-5xl font-bold text-yellow-500 mb-3">150+</p>
-            <p className="text-gray-700 text-base font-medium">Active Clients</p>
+          <div className="group bg-white rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2 border border-gray-100 hover:border-yellow-200">
+            <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl mx-auto mb-4 flex items-center justify-center transform group-hover:scale-110 transition-transform">
+              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+            <p className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-yellow-500 to-yellow-600 bg-clip-text text-transparent mb-3">150+</p>
+            <p className="text-gray-700 text-base font-semibold">Active Clients</p>
           </div>
-          <div className="bg-white rounded-lg p-8 text-center shadow-xl hover:shadow-2xl transition-shadow">
-            <p className="text-4xl md:text-5xl font-bold text-yellow-500 mb-3">18+</p>
-            <p className="text-gray-700 text-base font-medium">Years of Service</p>
+          <div className="group bg-white rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2 border border-gray-100 hover:border-yellow-200">
+            <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl mx-auto mb-4 flex items-center justify-center transform group-hover:scale-110 transition-transform">
+              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+              </svg>
+            </div>
+            <p className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-yellow-500 to-yellow-600 bg-clip-text text-transparent mb-3">18+</p>
+            <p className="text-gray-700 text-base font-semibold">Years of Service</p>
           </div>
-          <div className="bg-white rounded-lg p-8 text-center shadow-xl hover:shadow-2xl transition-shadow">
-            <p className="text-4xl md:text-5xl font-bold text-yellow-500 mb-3">25+</p>
-            <p className="text-gray-700 text-base font-medium">Countries Served</p>
+          <div className="group bg-white rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2 border border-gray-100 hover:border-yellow-200">
+            <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl mx-auto mb-4 flex items-center justify-center transform group-hover:scale-110 transition-transform">
+              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <p className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-yellow-500 to-yellow-600 bg-clip-text text-transparent mb-3">25+</p>
+            <p className="text-gray-700 text-base font-semibold">Countries Served</p>
           </div>
         </div>
       </div>

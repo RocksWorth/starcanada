@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function HeroSection() {
+export default function HeroSection({ id }: { id?: string }) {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   // Handle scroll-to functionality for smooth scrolling
@@ -37,7 +37,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative h-screen overflow-hidden">
+    <section id={id} className="relative h-screen overflow-hidden">
       {/* Video Background with Fallback Image */}
       <div className="absolute inset-0 bg-black z-10">
         {/* Fallback image that shows until video loads */}
@@ -75,13 +75,13 @@ export default function HeroSection() {
           </div>
           
           <h1 className={`text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-8 leading-tight transition-all duration-700 delay-300 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <span className="block">Transforming Waste</span>
-            <span className="block">Into <span className="text-gradient bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">Valuable Resources</span></span>
+            <span className="block drop-shadow-2xl">Transforming Waste</span>
+            <span className="block">Into <span className="text-gradient bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 bg-clip-text text-transparent drop-shadow-lg animate-gradient-x">Valuable Resources</span></span>
           </h1>
           
-          <p className={`text-xl md:text-2xl text-gray-100 mb-12 max-w-2xl leading-relaxed transition-all duration-700 delay-500 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            Connecting global suppliers and buyers with sustainable solutions for metal scrap trading 
-            and industrial equipment since 2005.
+          <p className={`text-xl md:text-2xl text-gray-100 mb-12 max-w-2xl leading-relaxed transition-all duration-700 delay-500 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} drop-shadow-lg`}>
+            Connecting global suppliers and buyers with <span className="text-yellow-300 font-semibold">sustainable solutions</span> for metal scrap trading 
+            and industrial equipment since <span className="text-yellow-300 font-semibold">2005</span>.
           </p>
           
           <div className={`flex flex-col sm:flex-row gap-6 transition-all duration-700 delay-700 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -139,6 +139,13 @@ export default function HeroSection() {
         </div>
       </div>
       
+      {/* Particles/Floating Elements */}
+      <div className="absolute inset-0 z-15 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-yellow-400 rounded-full animate-float"></div>
+        <div className="absolute top-1/3 right-1/4 w-3 h-3 bg-yellow-300 rounded-full animate-float-delayed"></div>
+        <div className="absolute bottom-1/3 left-1/3 w-2 h-2 bg-yellow-500 rounded-full animate-float-slow"></div>
+      </div>
+      
       {/* Add these keyframe animations to your globals.css file */}
       <style jsx>{`
         @keyframes fadeIn {
@@ -151,10 +158,47 @@ export default function HeroSection() {
           to { transform: translateY(0); opacity: 1; }
         }
         
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.3; }
+          50% { transform: translateY(-20px) translateX(10px); opacity: 0.8; }
+        }
+        
+        @keyframes float-delayed {
+          0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.2; }
+          50% { transform: translateY(-30px) translateX(-10px); opacity: 0.6; }
+        }
+        
+        @keyframes float-slow {
+          0%, 100% { transform: translateY(0px); opacity: 0.4; }
+          50% { transform: translateY(-15px); opacity: 0.7; }
+        }
+        
+        @keyframes gradient-x {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        
         .text-gradient {
           background-clip: text;
           -webkit-background-clip: text;
           color: transparent;
+          background-size: 200% auto;
+        }
+        
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+        
+        .animate-float-delayed {
+          animation: float-delayed 8s ease-in-out infinite;
+        }
+        
+        .animate-float-slow {
+          animation: float-slow 10s ease-in-out infinite;
+        }
+        
+        .animate-gradient-x {
+          animation: gradient-x 3s ease infinite;
         }
       `}</style>
     </section>

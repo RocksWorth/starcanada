@@ -109,87 +109,112 @@ export default function ServicesSection() {
   const activeService = services.find(service => service.id === activeTab) || services[0];
 
   return (
-    <section id="services" className="py-24 bg-gray-50" ref={sectionRef}>
-      <div className="container mx-auto px-6">
+    <section id="services" className="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden" ref={sectionRef}>
+      {/* Background decoration */}
+      <div className="absolute top-0 left-0 w-full h-full opacity-5">
+        <div className="absolute top-20 left-10 w-64 h-64 bg-yellow-400 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-yellow-300 rounded-full filter blur-3xl"></div>
+      </div>
+      
+      <div className="container mx-auto px-6 relative z-10">
         <div className={`text-center mb-16 transition-all duration-700 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Our Services</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-yellow-500 to-yellow-600 mx-auto mb-6"></div>
-          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+          <div className="inline-block mb-4">
+            <span className="bg-yellow-100 text-yellow-700 px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider">Our Services</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6">What We Offer</h2>
+          <div className="w-24 h-1.5 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mb-6 rounded-full"></div>
+          <p className="text-gray-600 max-w-3xl mx-auto text-xl">
             Comprehensive solutions for metal recycling and industrial equipment needs
           </p>
         </div>
         
         {/* Tabs */}
-        <div className={`flex flex-wrap justify-center space-x-2 mb-12 transition-all duration-700 delay-300 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className={`flex flex-wrap justify-center gap-3 mb-16 transition-all duration-700 delay-300 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {services.map((service) => (
             <button
               key={service.id}
               onClick={() => setActiveTab(service.id)}
-              className={`px-6 py-3 text-sm md:text-base rounded-full font-medium transition-all duration-300 mb-2 ${
+              className={`group px-8 py-4 text-sm md:text-base rounded-xl font-bold transition-all duration-300 flex items-center space-x-3 transform hover:scale-105 ${
                 activeTab === service.id 
-                ? 'bg-yellow-600 text-white shadow-lg' 
-                : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                ? 'bg-gradient-to-r from-yellow-500 to-yellow-600 text-white shadow-xl' 
+                : 'bg-white text-gray-700 hover:bg-yellow-50 border-2 border-gray-200 hover:border-yellow-300 shadow-md hover:shadow-lg'
               }`}
             >
-              {service.title}
+              <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${
+                activeTab === service.id ? 'bg-white/20' : 'bg-yellow-100'
+              }`}>
+                {service.icon}
+              </div>
+              <span>{service.title}</span>
             </button>
           ))}
         </div>
         
         {/* Content */}
-        <div className={`bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-500 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
+        <div className={`bg-white rounded-3xl shadow-2xl overflow-hidden transition-all duration-500 transform hover:shadow-3xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Left side - Image */}
-            <div className="relative h-64 lg:h-full min-h-[320px] bg-gray-100">
-              <div className="absolute inset-0 bg-yellow-600/20 z-10"></div>
+            <div className="relative h-80 lg:h-full min-h-[400px] bg-gradient-to-br from-gray-100 to-gray-200 group">
+              <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/30 to-yellow-400/20 z-10"></div>
               <Image
                 src={activeService.image}
                 alt={activeService.title}
                 fill
-                className="object-cover"
+                className="object-cover group-hover:scale-110 transition-transform duration-700"
               />
               
               {/* Floating badge */}
-              <div className="absolute top-6 left-6 z-20 bg-yellow-600 text-white px-4 py-2 rounded-lg font-bold shadow-lg">
+              <div className="absolute top-6 left-6 z-20 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-6 py-3 rounded-2xl font-bold shadow-2xl backdrop-blur-sm">
                 <div className="flex items-center">
-                  <div className="w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center mr-3">
+                  <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center mr-3">
                     {activeService.icon}
                   </div>
-                  <span>{activeService.title}</span>
+                  <span className="text-lg">{activeService.title}</span>
                 </div>
               </div>
+              
+              {/* Decorative corner */}
+              <div className="absolute bottom-0 right-0 w-32 h-32 bg-yellow-400/20 rounded-tl-full z-20"></div>
             </div>
             
             {/* Right side - Content */}
-            <div className="p-8 lg:p-12">
-              <h3 className="text-3xl font-bold text-gray-800 mb-4">{activeService.title}</h3>
-              <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+            <div className="p-10 lg:p-14 flex flex-col justify-center">
+              <h3 className="text-3xl md:text-4xl font-bold text-gray-800 mb-5 leading-tight">{activeService.title}</h3>
+              <p className="text-gray-600 text-lg md:text-xl mb-10 leading-relaxed">
                 {activeService.description}
               </p>
               
-              <h4 className="text-lg font-semibold text-gray-800 mb-4">What We Provide:</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 mb-8">
+              <h4 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                <span className="w-1 h-6 bg-gradient-to-b from-yellow-400 to-yellow-600 rounded-full mr-3"></span>
+                What We Provide
+              </h4>
+              <div className="grid grid-cols-1 gap-4 mb-10">
                 {activeService.features.map((feature, index) => (
-                  <div key={index} className="flex items-start">
-                    <div className="flex-shrink-0 mt-1">
-                      <svg className="w-5 h-5 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
+                  <div key={index} className="flex items-start group hover:bg-yellow-50 p-3 rounded-lg transition-colors">
+                    <div className="flex-shrink-0 mt-0.5">
+                      <div className="w-6 h-6 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center">
+                        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      </div>
                     </div>
-                    <p className="ml-3 text-gray-700">{feature}</p>
+                    <p className="ml-4 text-gray-700 font-medium">{feature}</p>
                   </div>
                 ))}
               </div>
               
-              <a 
-                href="#contact" 
-                className="inline-flex items-center text-yellow-600 hover:text-yellow-700 font-semibold group"
+              <button 
+                onClick={() => {
+                  const element = document.getElementById('contact');
+                  if (element) element.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="group inline-flex items-center justify-center bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
               >
                 Request a Quote
                 <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </a>
+              </button>
             </div>
           </div>
         </div>

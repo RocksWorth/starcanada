@@ -116,17 +116,30 @@ export default function KeySellingPoints() {
   ];
 
   return (
-    <section id="features" className="py-24 relative overflow-hidden" ref={sectionRef}>
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-yellow-500 to-yellow-700 -skew-y-6 transform origin-top-left scale-110 z-0"></div>
+    <section id="features" className="py-28 relative overflow-hidden" ref={sectionRef}>
+      {/* Background with improved gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 z-0"></div>
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+        }}></div>
+      </div>
+      
+      {/* Floating Orbs */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+      <div className="absolute top-40 right-10 w-72 h-72 bg-yellow-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+      <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
       
       <div className="container mx-auto px-6 relative z-10">
-        <div className={`text-center mb-16 transition-all duration-700 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+        <div className={`text-center mb-20 transition-all duration-700 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="inline-block mb-4">
+            <span className="bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider">Our Advantages</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg">
             Why Choose Us
           </h2>
-          <div className="w-24 h-1 bg-white mx-auto mb-6"></div>
-          <p className="text-white/90 text-lg max-w-2xl mx-auto">
+          <div className="w-32 h-1.5 bg-white/80 mx-auto mb-6 rounded-full"></div>
+          <p className="text-white/95 text-xl max-w-3xl mx-auto drop-shadow-md">
             Our commitment to excellence sets us apart in the global trading industry
           </p>
         </div>
@@ -135,43 +148,72 @@ export default function KeySellingPoints() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`bg-white rounded-xl shadow-xl overflow-hidden transition-all duration-700 delay-${index * 100} transform ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
-              } hover:shadow-2xl hover:-translate-y-2`}
+              className={`group bg-white rounded-2xl shadow-2xl overflow-hidden transition-all duration-700 delay-${index * 100} transform ${
+                isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-16 scale-95'
+              } hover:shadow-3xl hover:-translate-y-3 hover:scale-105`}
             >
-              <div className="p-8">
-                <div className="w-20 h-20 bg-yellow-50 rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-yellow-100">
-                  {feature.icon}
+              <div className="relative p-8 pt-12">
+                {/* Decorative top gradient */}
+                <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600"></div>
+                
+                {/* Icon with animated background */}
+                <div className="relative mb-8 flex justify-center">
+                  <div className="absolute w-24 h-24 bg-yellow-100 rounded-2xl rotate-6 group-hover:rotate-12 transition-transform"></div>
+                  <div className="relative w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-all group-hover:scale-110 transform">
+                    {feature.icon}
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-4 text-center">
+                
+                <h3 className="text-2xl font-bold text-gray-800 mb-4 text-center group-hover:text-yellow-600 transition-colors">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 text-center leading-relaxed">
+                <p className="text-gray-600 text-center leading-relaxed text-base">
                   {feature.description}
                 </p>
+                
+                {/* Decorative corner element */}
+                <div className="absolute bottom-4 right-4 w-16 h-16 bg-yellow-50 rounded-tl-3xl opacity-50 group-hover:opacity-100 transition-opacity"></div>
               </div>
-              <div className="h-2 bg-gradient-to-r from-yellow-400 to-yellow-600"></div>
             </div>
           ))}
         </div>
         
         {/* Call to action */}
-        <div className={`mt-16 text-center transition-all duration-700 delay-500 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <a 
-            href="#contact" 
-            className="inline-flex items-center bg-white text-yellow-700 font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all hover:bg-yellow-50 text-lg"
+        <div className={`mt-20 text-center transition-all duration-700 delay-500 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <button 
+            onClick={() => {
+              const element = document.getElementById('contact');
+              if (element) element.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="group inline-flex items-center bg-white text-yellow-700 font-bold py-5 px-10 rounded-2xl shadow-2xl hover:shadow-3xl transition-all hover:bg-yellow-50 text-xl transform hover:scale-110"
           >
             Get Started Today
-            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            <svg className="w-6 h-6 ml-3 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </a>
+          </button>
         </div>
       </div>
       
-      {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-400/20 rounded-full -mr-32 -mt-16 z-0"></div>
-      <div className="absolute bottom-0 left-0 w-40 h-40 bg-yellow-400/20 rounded-full -ml-20 -mb-20 z-0"></div>
+      <style jsx>{`
+        @keyframes blob {
+          0%, 100% { transform: translate(0px, 0px) scale(1); }
+          33% { transform: translate(30px, -50px) scale(1.1); }
+          66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        
+        .animate-blob {
+          animation: blob 7s infinite;
+        }
+        
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+        
+        .animation-delay-4000 {
+          animation-delay: 4s;
+        }
+      `}</style>
     </section>
   );
 }
