@@ -55,7 +55,6 @@ const testimonials: Testimonial[] = [
 export default function TestimonialsSection() {
   const [isVisible, setIsVisible] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [autoplay, setAutoplay] = useState(true);
   const sectionRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -71,31 +70,30 @@ export default function TestimonialsSection() {
       { threshold: 0.2 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const currentRef = sectionRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
 
   // Autoplay functionality
   useEffect(() => {
-    if (autoplay) {
-      timeoutRef.current = setTimeout(() => {
-        setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-      }, 5000);
-    }
+    timeoutRef.current = setTimeout(() => {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+    }, 5000);
     
     return () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
       }
     };
-  }, [activeIndex, autoplay, testimonials.length]);
+  }, [activeIndex]);
 
   // Handle manual navigation
   const goToSlide = (index: number) => {
@@ -103,11 +101,9 @@ export default function TestimonialsSection() {
     // Reset autoplay timeout when manually navigating
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
-      if (autoplay) {
-        timeoutRef.current = setTimeout(() => {
-          setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-        }, 5000);
-      }
+      timeoutRef.current = setTimeout(() => {
+        setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+      }, 5000);
     }
   };
 
@@ -241,7 +237,7 @@ export default function TestimonialsSection() {
                       <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                     </svg>
                   </div>
-                  <p className="text-2xl md:text-3xl text-gray-700 leading-relaxed font-light italic">"{currentTestimonial.quote}"</p>
+                  <p className="text-2xl md:text-3xl text-gray-700 leading-relaxed font-light italic">&ldquo;{currentTestimonial.quote}&rdquo;</p>
                 </div>
                 
                 {/* Rating stars */}
