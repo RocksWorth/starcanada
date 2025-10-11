@@ -1,36 +1,152 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Star Canada International Website
+
+A modern, responsive website for Star Canada International, a global trading company specializing in metal scrap and industrial equipment trading with a focus on sustainability.
+
+## Project Overview
+
+This project is a Next.js website built with Tailwind CSS, featuring a component-based architecture for better maintainability. The website showcases Star Canada International's services, value propositions, and contact information in a clean, professional design.
+
+## Project Structure
+
+```
+my-project/
+├── public/
+│   └── images/           # Place all images here
+│       ├── hero-background.jpg
+│       ├── about-image.jpg
+│       └── ...
+├── src/
+│   ├── app/
+│   │   ├── components/   # All component files
+│   │   │   ├── AboutSection.tsx
+│   │   │   ├── ContactSection.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   ├── HeroSection.tsx
+│   │   │   ├── KeySellingPoints.tsx
+│   │   │   ├── ServicesSection.tsx
+│   │   │   └── TestimonialsSection.tsx
+│   │   ├── globals.css   # Global styles
+│   │   ├── layout.tsx    # Main layout component
+│   │   └── page.tsx      # Main page that assembles all components
+│   └── ...
+├── package.json
+├── tailwind.config.js
+└── ...
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
+- Node.js (v14 or later)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+   ```
+   git clone <repository-url>
+   cd my-project
+   ```
+
+2. Install dependencies:
+   ```
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Create the images directory and add required images:
+   ```
+   mkdir -p public/images
+   ```
+   
+   Add the following images to the public/images directory:
+   - hero-background.jpg - A background image for the hero section
+   - about-image.jpg - An image for the about section
+
+4. Start the development server:
+   ```
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+5. Open your browser and navigate to [http://localhost:3000](http://localhost:3000)
+
+## Features
+
+- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
+- **Modern UI**: Clean, professional interface with consistent branding
+- **Component-Based Architecture**: Modular code organization for better maintainability
+- **Tailwind CSS**: Utility-first CSS framework for rapid styling
+- **Next.js Framework**: React framework with server-side rendering capabilities
+
+## Main Sections
+
+- **Hero Section**: Prominent landing area with a call-to-action
+- **About Section**: Company information and mission
+- **Services Section**: Detailed information about metal scrap trading and industrial equipment services
+- **Key Selling Points**: Highlighting global reach, sustainability, competitive pricing, and customer commitment
+- **Testimonials**: Client feedback showcasing the company's reliability and expertise
+- **Contact Section**: Contact form and email information for inquiries
+- **Footer**: Navigation links and copyright information
+
+## Customization
+
+### Updating Content
+
+- Edit the component files to update text content
+- Replace sample testimonials with actual client feedback
+- Update email addresses and contact information
+
+### Styling
+
+- The website uses Tailwind CSS for styling
+- Modify the color scheme by updating class names (e.g., change `yellow-600` to `blue-600` for a different accent color)
+- Adjust spacing and layout using Tailwind's utility classes
+
+### Adding Images
+
+- Place all images in the `public/images` directory
+- Reference images in components using the Next.js Image component:
+  ```jsx
+  <Image
+    src="/images/your-image-name.jpg"
+    alt="Description of image"
+    width={800}
+    height={600}
+  />
+  ```
+
+## Production Deployment
+
+To build the project for production:
+
+```
+npm run build
 # or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+yarn build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You can then deploy the build output to hosting platforms such as Vercel, Netlify, or any other service that supports Next.js applications.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Best Practices
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Keep component files focused on a single responsibility
+- Use descriptive class names for better maintainability
+- Optimize images for web performance
+- Regularly test responsive behavior on different screen sizes
 
-## Learn More
+## Troubleshooting
 
-To learn more about Next.js, take a look at the following resources:
+If you encounter module import errors:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Check file names and paths for correct casing
+2. Ensure all component files are in the correct location
+3. Try restarting the development server
+4. Clear your browser cache if you see outdated content
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the LICENSE file for details.
