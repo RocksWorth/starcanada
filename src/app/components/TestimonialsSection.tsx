@@ -20,7 +20,6 @@ const testimonials: Testimonial[] = [
     position: "Procurement Manager",
     company: "MetalWorks Inc.",
     quote: "Star Canada International has been an invaluable partner for our metal procurement needs. Their global reach and commitment to quality have consistently exceeded our expectations.",
-    image: "/images/testimonials/john-anderson.jpg",
     rating: 5
   },
   {
@@ -29,7 +28,6 @@ const testimonials: Testimonial[] = [
     position: "Operations Director",
     company: "Global Industries",
     quote: "Working with Star Canada has transformed our supply chain. Their sustainable approach and competitive pricing have helped us reduce costs while meeting our environmental goals.",
-    image: "/images/testimonials/sarah-chen.jpg",
     rating: 5
   },
   {
@@ -38,7 +36,6 @@ const testimonials: Testimonial[] = [
     position: "CEO",
     company: "Rodriguez Manufacturing",
     quote: "The team at Star Canada International truly understands the industrial equipment market. Their expertise has helped us source high-quality used machinery at excellent prices.",
-    image: "/images/testimonials/michael-rodriguez.jpg",
     rating: 5
   },
   {
@@ -47,7 +44,6 @@ const testimonials: Testimonial[] = [
     position: "Sustainability Officer",
     company: "EcoTech Solutions",
     quote: "Star Canada's commitment to sustainable practices aligns perfectly with our corporate values. They've helped us implement recycling solutions that have measurably reduced our environmental impact.",
-    image: "/images/testimonials/emma-williams.jpg",
     rating: 5
   }
 ];

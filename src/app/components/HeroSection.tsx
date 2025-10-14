@@ -37,16 +37,12 @@ export default function HeroSection({ id }: { id?: string }) {
 
   return (
     <section id={id} className="relative h-screen overflow-hidden">
-      {/* Video Background with Fallback Image */}
+      {/* Video Background with Fallback */}
       <div className="absolute inset-0 bg-black z-10">
-        {/* Fallback image that shows until video loads */}
-        <Image
-          src="/images/hero-background.jpg" 
-          alt="Industrial metal recycling facility"
-          fill
-          className={`object-cover transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-0' : 'opacity-100'}`}
-          priority
-        />
+        {/* Fallback gradient that shows until video loads */}
+        <div
+          className={`absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-0' : 'opacity-100'}`}
+        ></div>
         
         {/* Video Background */}
         <video 

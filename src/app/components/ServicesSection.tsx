@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef, ReactElement } from 'react';
-import Image from 'next/image';
 
 // Define type for service item
 interface ServiceItem {
@@ -61,7 +60,7 @@ export default function ServicesSection() {
         "Efficient logistics management",
         "Custom sorting and processing"
       ],
-      image: "/images/metal-scrap.jpg"
+      image: "metal-scrap"
     },
     {
       id: "industrial-equipment",
@@ -82,7 +81,7 @@ export default function ServicesSection() {
         "Installation assistance",
         "International shipping arrangements"
       ],
-      image: "/images/industrial-equipment.jpg"
+      image: "industrial-equipment"
     },
     {
       id: "logistics",
@@ -102,7 +101,7 @@ export default function ServicesSection() {
         "Real-time tracking",
         "Documentation assistance"
       ],
-      image: "/images/logistics.jpg"
+      image: "logistics"
     }
   ];
 
@@ -155,14 +154,22 @@ export default function ServicesSection() {
         <div className={`bg-white rounded-3xl shadow-2xl overflow-hidden transition-all duration-500 transform hover:shadow-3xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Left side - Image */}
-            <div className="relative h-80 lg:h-full min-h-[400px] bg-gradient-to-br from-gray-100 to-gray-200 group">
+            <div className="relative h-80 lg:h-full min-h-[400px] group">
+              {/* Gradient background based on service type */}
+              <div className={`absolute inset-0 ${
+                activeService.image === 'metal-scrap' 
+                  ? 'bg-gradient-to-br from-gray-600 via-gray-700 to-gray-800' 
+                  : activeService.image === 'industrial-equipment'
+                  ? 'bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900'
+                  : 'bg-gradient-to-br from-green-600 via-teal-700 to-teal-900'
+              }`}></div>
+              
+              {/* Pattern overlay */}
+              <div className="absolute inset-0 opacity-20" style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+              }}></div>
+              
               <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/30 to-yellow-400/20 z-10"></div>
-              <Image
-                src={activeService.image}
-                alt={activeService.title}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
               
               {/* Floating badge */}
               <div className="absolute top-6 left-6 z-20 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-6 py-3 rounded-2xl font-bold shadow-2xl backdrop-blur-sm">
