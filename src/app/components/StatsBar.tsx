@@ -36,7 +36,6 @@ export default function StatsBar() {
         observer.unobserve(currentRef);
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const animateCounters = () => {
