@@ -1,8 +1,9 @@
 import { notFound } from 'next/navigation';
 import { getCategoryBySlug } from '@/lib/catalog';
 
-export default function CategoryPage({ params }: { params: { category: string } }) {
-  const category = getCategoryBySlug(params.category);
+export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
+  const { category: categorySlug } = await params;
+  const category = getCategoryBySlug(categorySlug);
   if (!category) return notFound();
 
   return (
