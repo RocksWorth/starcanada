@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -81,7 +82,7 @@ export default function Navbar() {
                 {item.label}
               </button>
             ))}
-            <a
+            <Link
               href="/catalog"
               className={`px-4 py-2 rounded-lg font-bold transition-all ${
                 isScrolled
@@ -90,7 +91,7 @@ export default function Navbar() {
               }`}
             >
               Catalog
-            </a>
+            </Link>
           </div>
 
           {/* CTA Button */}
@@ -164,7 +165,7 @@ export default function Navbar() {
                 {item.label}
               </button>
             ))}
-            <a
+            <Link
               href="/catalog"
               className={`block w-full text-left px-4 py-3 rounded-lg font-bold transition-all ${
                 isScrolled
@@ -173,7 +174,7 @@ export default function Navbar() {
               }`}
             >
               Catalog
-            </a>
+            </Link>
             <button
               onClick={() => scrollToSection('contact')}
               className="block w-full text-left px-4 py-3 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white font-bold rounded-lg hover:from-yellow-600 hover:to-yellow-700 transition-all"

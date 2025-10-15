@@ -37,13 +37,13 @@ export default function ContactSection() {
           <div className="w-24 h-1 bg-gradient-to-r from-yellow-500 to-yellow-600 mx-auto mb-8"></div>
           <p className="text-gray-600 text-xl max-w-3xl mx-auto mb-12">
             Contact us for competitive quotes on recycling metals, construction equipment, and manufacturing machines. 
-            We're here to help you find the perfect solution for your business needs.
+            We&apos;re here to help you find the perfect solution for your business needs.
           </p>
           
           <div className="bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-2xl p-8 shadow-xl max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold text-white mb-4">Get In Touch</h3>
             <p className="text-white/90 text-lg mb-6">
-              Ready to discuss your requirements? We're here to help with competitive pricing and reliable service.
+              Ready to discuss your requirements? We&apos;re here to help with competitive pricing and reliable service.
             </p>
             <a 
               href="mailto:starcanadainc@yahoo.ca"
