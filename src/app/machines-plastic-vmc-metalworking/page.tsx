@@ -35,9 +35,9 @@ export default function MachinesPlasticVmcMetalworkingPage() {
               </div>
             </div>
 
-          <a href="#contact" className="inline-flex items-center bg-yellow-600 hover:bg-yellow-700 text-white font-bold px-8 py-4 rounded-lg mt-8 text-lg">
+          <a href="mailto:starcanadainc@yahoo.ca?subject=Machine Inspection Request&body=Hello, I'm interested in requesting an inspection for plastic molding, VMC, or metalworking machines. Please provide details about available machines and inspection process." className="inline-flex items-center bg-yellow-600 hover:bg-yellow-700 text-white font-bold px-8 py-4 rounded-lg mt-8 text-lg">
             Request Machine Inspection
-            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
           </a>
         </div>
       </section>
