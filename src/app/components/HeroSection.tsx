@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 
 export default function HeroSection({ id }: { id?: string }) {
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  
   // Handle scroll-to functionality for smooth scrolling
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -13,47 +13,22 @@ export default function HeroSection({ id }: { id?: string }) {
     }
   };
 
-  // Set video as loaded after it's ready
+  // Trigger animations after component mounts
   useEffect(() => {
-    const videoElement = document.getElementById('background-video');
-    if (videoElement) {
-      videoElement.addEventListener('loadeddata', () => {
-        setIsVideoLoaded(true);
-      });
-    }
-    
-    // Trigger animations after component mounts
     setIsVisible(true);
-    
-    return () => {
-      if (videoElement) {
-        videoElement.removeEventListener('loadeddata', () => {
-          setIsVideoLoaded(true);
-        });
-      }
-    };
   }, []);
 
   return (
     <section id={id} className="relative h-screen overflow-hidden">
-      {/* Video Background with Fallback */}
+      {/* Background Image */}
       <div className="absolute inset-0 bg-black z-10">
-        {/* Fallback gradient that shows until video loads */}
-        <div
-          className={`absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-0' : 'opacity-100'}`}
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ 
+            backgroundImage: `url("/StarCanadaImages/Big supplier of Recycling Mix Metals/WhatsApp Image 2025-09-23 at 19.12.15.jpeg")` 
+          }}
         ></div>
-        
-        {/* Video Background */}
-        <video 
-          id="background-video"
-          autoPlay 
-          loop 
-          muted 
-          playsInline
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-75' : 'opacity-0'}`}
-        >
-          <source src="/videos/industrial-metal-recycling.mp4" type="video/mp4" />
-        </video>
         
         {/* Enhanced gradient overlay for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/90 via-black/70 to-black/50 z-10"></div>
@@ -69,34 +44,30 @@ export default function HeroSection({ id }: { id?: string }) {
           </div>
           
           <h1 className={`text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-8 leading-tight transition-all duration-700 delay-300 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <span className="block drop-shadow-2xl">Transforming Waste</span>
-            <span className="block">Into <span className="text-gradient bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 bg-clip-text text-transparent drop-shadow-lg animate-gradient-x">Valuable Resources</span></span>
+            <span className="block drop-shadow-2xl">Global Industrial</span>
+            <span className="block">Equipment <span className="text-gradient bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 bg-clip-text text-transparent drop-shadow-lg animate-gradient-x">Trading</span></span>
           </h1>
           
-          <p className={`text-xl md:text-2xl text-gray-100 mb-12 max-w-2xl leading-relaxed transition-all duration-700 delay-500 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} drop-shadow-lg`}>
-            Connecting global suppliers and buyers with <span className="text-yellow-300 font-semibold">sustainable solutions</span> for metal scrap trading 
-            and industrial equipment since <span className="text-yellow-300 font-semibold">2005</span>.
+          <p className={`text-xl md:text-2xl text-gray-100 mb-12 max-w-3xl leading-relaxed transition-all duration-700 delay-500 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} drop-shadow-lg`}>
+            We buy and sell <span className="text-yellow-300 font-semibold">recycling metals</span>, 
+            <span className="text-yellow-300 font-semibold">construction machinery</span>, and 
+            <span className="text-yellow-300 font-semibold">industrial equipment</span> worldwide. 
+            Verified condition, competitive pricing, reliable logistics.
           </p>
           
-          <div className={`flex flex-col sm:flex-row gap-6 transition-all duration-700 delay-700 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <button 
-              onClick={() => scrollToSection('services')}
-              className="group bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-bold py-4 px-8 rounded-lg text-center transition duration-300 transform hover:scale-105 flex items-center justify-center shadow-lg hover:shadow-xl"
-            >
-              Our Services
-              <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </button>
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className="group bg-transparent hover:bg-white/10 border-2 border-white text-white font-bold py-4 px-8 rounded-lg text-center transition-all duration-300 flex items-center justify-center hover:border-yellow-400 hover:text-yellow-400"
-            >
-              Contact Us
-              <svg className="w-5 h-5 ml-2 transform group-hover:rotate-45 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </button>
+          <div className={`flex flex-col sm:flex-row gap-4 transition-all duration-700 delay-700 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <a href="/recycling-mix-metals" className="group bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-bold py-4 px-6 rounded-lg text-center transition duration-300 transform hover:scale-105 flex items-center justify-center shadow-lg hover:shadow-xl">
+              Recycling Mix Metals
+              <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <a href="/construction-industrial-supplies" className="group bg-white/10 border-2 border-white text-white font-bold py-4 px-6 rounded-lg text-center transition-all duration-300 flex items-center justify-center hover:border-yellow-400 hover:text-yellow-300">
+              Construction & Industrial
+              <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <a href="/machines-plastic-vmc-metalworking" className="group bg-white/10 border-2 border-white text-white font-bold py-4 px-6 rounded-lg text-center transition-all duration-300 flex items-center justify-center hover:border-yellow-400 hover:text-yellow-300">
+              Plastic, VMC & Metalworking
+              <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
           </div>
           
           {/* Scroll down indicator with improved animation */}

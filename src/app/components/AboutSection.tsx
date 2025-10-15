@@ -50,40 +50,41 @@ export default function AboutSection() {
         
         {/* Main content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20">
-          {/* Left column - Image */}
-          <div className={`transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-            <div className="relative">
-              <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-yellow-500 via-yellow-600 to-yellow-700">
-                {/* Decorative pattern overlay */}
-                <div className="absolute inset-0 opacity-20" style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-                }}></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-                
-                {/* Floating Badge */}
-                <div className="absolute top-6 left-6">
-                  <div className="bg-yellow-500 text-black px-5 py-2 rounded-full inline-flex items-center font-bold text-sm shadow-lg">
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
-                    </svg>
-                    SINCE 2005
+              {/* Left column - Image */}
+              <div className={`transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
+                <div className="relative">
+                  <div 
+                    className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl bg-cover bg-center"
+                    style={{
+                      backgroundImage: `url("/StarCanadaImages/Construction Machinery and Engine and  Industrial supplies/WhatsApp Image 2025-09-23 at 19.27.14.jpeg")`
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+
+                    {/* Floating Badge */}
+                    <div className="absolute top-6 left-6">
+                      <div className="bg-yellow-500 text-black px-5 py-2 rounded-full inline-flex items-center font-bold text-sm shadow-lg">
+                        <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
+                        </svg>
+                        SINCE 2005
+                      </div>
+                    </div>
+
+                    {/* Caption */}
+                    <div className="absolute bottom-8 left-8 right-8 text-white">
+                      <h3 className="text-3xl font-bold mb-3 drop-shadow-lg">Global Excellence</h3>
+                      <p className="text-white/90 text-lg drop-shadow-md">
+                        Our state-of-the-art facility in Vancouver handles over <span className="font-bold text-yellow-300">30,000 tons</span> of material annually
+                      </p>
+                    </div>
                   </div>
-                </div>
-                
-                {/* Caption */}
-                <div className="absolute bottom-8 left-8 right-8 text-white">
-                  <h3 className="text-3xl font-bold mb-3 drop-shadow-lg">Global Excellence</h3>
-                  <p className="text-white/90 text-lg drop-shadow-md">
-                    Our state-of-the-art facility in Vancouver handles over <span className="font-bold text-yellow-300">30,000 tons</span> of material annually
-                  </p>
+
+                  {/* Decorative Element */}
+                  <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-yellow-400 rounded-2xl -z-10 transform rotate-12"></div>
+                  <div className="absolute -top-6 -left-6 w-24 h-24 bg-yellow-300 rounded-full -z-10 opacity-50"></div>
                 </div>
               </div>
-              
-              {/* Decorative Element */}
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-yellow-400 rounded-2xl -z-10 transform rotate-12"></div>
-              <div className="absolute -top-6 -left-6 w-24 h-24 bg-yellow-300 rounded-full -z-10 opacity-50"></div>
-            </div>
-          </div>
           
           {/* Right column - Text */}
           <div className={`transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
@@ -119,19 +120,31 @@ export default function AboutSection() {
               ))}
             </div>
             
-            {/* CTA button */}
-            <button 
-              onClick={() => {
-                const element = document.getElementById('services');
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="group inline-flex items-center justify-center bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-lg transform hover:scale-105"
-            >
-              Explore Our Services
-              <svg className="w-6 h-6 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </button>
+                {/* CTA buttons */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button
+                    onClick={() => {
+                      const element = document.getElementById('services');
+                      if (element) element.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="group inline-flex items-center justify-center bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-lg transform hover:scale-105"
+                  >
+                    Explore Our Services
+                    <svg className="w-6 h-6 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </button>
+                  
+                  <a
+                    href="/recycling-mix-metals"
+                    className="group inline-flex items-center justify-center bg-transparent hover:bg-yellow-50 border-2 border-yellow-500 text-yellow-600 hover:text-yellow-700 font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-lg transform hover:scale-105"
+                  >
+                    View Metal Inventory
+                    <svg className="w-6 h-6 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </a>
+                </div>
           </div>
         </div>
         

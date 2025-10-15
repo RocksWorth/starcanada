@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, ReactElement } from 'react';
+import Link from 'next/link';
 
 // Define type for service item
 interface ServiceItem {
@@ -145,7 +146,16 @@ export default function ServicesSection() {
               }`}>
                 {service.icon}
               </div>
-              <span>{service.title}</span>
+              {/* Deep links to dedicated pages */}
+              {service.id === 'metal-scrap' && (
+                <a href="/recycling-mix-metals" className="underline decoration-yellow-300 decoration-2 underline-offset-4">{service.title}</a>
+              )}
+              {service.id === 'industrial-equipment' && (
+                <a href="/construction-industrial-supplies" className="underline decoration-yellow-300 decoration-2 underline-offset-4">{service.title}</a>
+              )}
+              {service.id === 'logistics' && (
+                <a href="/machines-plastic-vmc-metalworking" className="underline decoration-yellow-300 decoration-2 underline-offset-4">{service.title}</a>
+              )}
             </button>
           ))}
         </div>
@@ -153,37 +163,35 @@ export default function ServicesSection() {
         {/* Content */}
         <div className={`bg-white rounded-3xl shadow-2xl overflow-hidden transition-all duration-500 transform hover:shadow-3xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
           <div className="grid grid-cols-1 lg:grid-cols-2">
-            {/* Left side - Image */}
-            <div className="relative h-80 lg:h-full min-h-[400px] group">
-              {/* Gradient background based on service type */}
-              <div className={`absolute inset-0 ${
-                activeService.image === 'metal-scrap' 
-                  ? 'bg-gradient-to-br from-gray-600 via-gray-700 to-gray-800' 
-                  : activeService.image === 'industrial-equipment'
-                  ? 'bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900'
-                  : 'bg-gradient-to-br from-green-600 via-teal-700 to-teal-900'
-              }`}></div>
-              
-              {/* Pattern overlay */}
-              <div className="absolute inset-0 opacity-20" style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-              }}></div>
-              
-              <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/30 to-yellow-400/20 z-10"></div>
-              
-              {/* Floating badge */}
-              <div className="absolute top-6 left-6 z-20 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-6 py-3 rounded-2xl font-bold shadow-2xl backdrop-blur-sm">
-                <div className="flex items-center">
-                  <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center mr-3">
-                    {activeService.icon}
+                {/* Left side - Image */}
+                <div className="relative h-80 lg:h-full min-h-[400px] group">
+                  {/* Dynamic background image based on service type */}
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{
+                      backgroundImage: activeService.id === 'metal-scrap' 
+                        ? `url("/StarCanadaImages/Big supplier of Recycling Mix Metals/WhatsApp Image 2025-09-23 at 19.12.15.jpeg")`
+                        : activeService.id === 'industrial-equipment'
+                        ? `url("/StarCanadaImages/Construction Machinery and Engine and  Industrial supplies/WhatsApp Image 2025-09-23 at 19.27.14.jpeg")`
+                        : `url("/StarCanadaImages/Machines like plastic molding vmcs and metal working/WhatsApp Image 2025-09-23 at 18.54.13.jpeg")`
+                    }}
+                  ></div>
+
+                  <div className="absolute inset-0 bg-gradient-to-br from-black/60 to-black/40 z-10"></div>
+
+                  {/* Floating badge */}
+                  <div className="absolute top-6 left-6 z-20 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-6 py-3 rounded-2xl font-bold shadow-2xl backdrop-blur-sm">
+                    <div className="flex items-center">
+                      <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center mr-3">
+                        {activeService.icon}
+                      </div>
+                      <span className="text-lg">{activeService.title}</span>
+                    </div>
                   </div>
-                  <span className="text-lg">{activeService.title}</span>
+
+                  {/* Decorative corner */}
+                  <div className="absolute bottom-0 right-0 w-32 h-32 bg-yellow-400/20 rounded-tl-full z-20"></div>
                 </div>
-              </div>
-              
-              {/* Decorative corner */}
-              <div className="absolute bottom-0 right-0 w-32 h-32 bg-yellow-400/20 rounded-tl-full z-20"></div>
-            </div>
             
             {/* Right side - Content */}
             <div className="p-10 lg:p-14 flex flex-col justify-center">
@@ -230,15 +238,35 @@ export default function ServicesSection() {
         {/* Additional services teaser */}
         <div className={`mt-16 text-center transition-all duration-700 delay-500 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <p className="text-gray-600 mb-6">Need customized solutions for your business?</p>
-          <a 
-            href="#contact" 
-            className="inline-flex items-center bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-lg"
-          >
-            Contact Our Team
-            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-            </svg>
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/recycling-mix-metals"
+              className="inline-flex items-center bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-lg"
+            >
+              Recycling Metals
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+            <Link
+              href="/construction-industrial-supplies"
+              className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-lg"
+            >
+              Construction Equipment
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+            <Link
+              href="/machines-plastic-vmc-metalworking"
+              className="inline-flex items-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-lg"
+            >
+              Manufacturing Machines
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
     </section>

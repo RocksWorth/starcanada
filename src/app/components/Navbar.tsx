@@ -81,6 +81,16 @@ export default function Navbar() {
                 {item.label}
               </button>
             ))}
+            <a
+              href="/catalog"
+              className={`px-4 py-2 rounded-lg font-bold transition-all ${
+                isScrolled
+                  ? 'text-yellow-700 hover:text-yellow-800 hover:bg-yellow-50'
+                  : 'text-yellow-300 hover:text-white hover:bg-white/10'
+              }`}
+            >
+              Catalog
+            </a>
           </div>
 
           {/* CTA Button */}
@@ -154,6 +164,16 @@ export default function Navbar() {
                 {item.label}
               </button>
             ))}
+            <a
+              href="/catalog"
+              className={`block w-full text-left px-4 py-3 rounded-lg font-bold transition-all ${
+                isScrolled
+                  ? 'text-yellow-700 hover:text-yellow-800 hover:bg-yellow-50'
+                  : 'text-yellow-300 hover:text-white hover:bg-white/10'
+              }`}
+            >
+              Catalog
+            </a>
             <button
               onClick={() => scrollToSection('contact')}
               className="block w-full text-left px-4 py-3 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white font-bold rounded-lg hover:from-yellow-600 hover:to-yellow-700 transition-all"

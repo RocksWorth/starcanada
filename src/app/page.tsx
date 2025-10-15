@@ -4,9 +4,9 @@ import StatsBar from './components/StatsBar';
 import AboutSection from './components/AboutSection';
 import ServicesSection from './components/ServicesSection';
 import KeySellingPoints from './components/KeySellingPoints';
+import ImageGallerySection from './components/ImageGallerySection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
-import TestimonialsSection from './components/TestimonialsSection';
 
 export default function Home() {
   return (
@@ -26,14 +26,14 @@ export default function Home() {
       {/* Services Section */}
       <ServicesSection />
 
-      {/* Key Selling Points */}
-      <KeySellingPoints />
-      
-      {/* Testimonials Section - Optional */}
-      <TestimonialsSection />
+          {/* Key Selling Points */}
+          <KeySellingPoints />
 
-      {/* Contact Section */}
-      <ContactSection />
+          {/* Image Gallery Section */}
+          <ImageGallerySection />
+
+          {/* Contact Section */}
+          <ContactSection />
 
       {/* Footer */}
       <Footer />

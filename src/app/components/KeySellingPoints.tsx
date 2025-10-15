@@ -181,18 +181,20 @@ export default function KeySellingPoints() {
         
         {/* Call to action */}
         <div className={`mt-20 text-center transition-all duration-700 delay-500 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <button 
-            onClick={() => {
-              const element = document.getElementById('contact');
-              if (element) element.scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="group inline-flex items-center bg-white text-yellow-700 font-bold py-5 px-10 rounded-2xl shadow-2xl hover:shadow-3xl transition-all hover:bg-yellow-50 text-xl transform hover:scale-110"
-          >
-            Get Started Today
-            <svg className="w-6 h-6 ml-3 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </button>
+          <div className="flex gap-3 justify-center flex-wrap">
+            <a href="/recycling-mix-metals" className="group inline-flex items-center bg-white text-yellow-700 font-bold py-4 px-6 rounded-2xl shadow-2xl hover:shadow-3xl transition-all hover:bg-yellow-50 text-lg transform hover:scale-105">
+              Recycling Mix Metals
+              <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <a href="/construction-industrial-supplies" className="group inline-flex items-center bg-white text-yellow-700 font-bold py-4 px-6 rounded-2xl shadow-2xl hover:shadow-3xl transition-all hover:bg-yellow-50 text-lg transform hover:scale-105">
+              Construction & Industrial
+              <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4-H3"/></svg>
+            </a>
+            <a href="/machines-plastic-vmc-metalworking" className="group inline-flex items-center bg-white text-yellow-700 font-bold py-4 px-6 rounded-2xl shadow-2xl hover:shadow-3xl transition-all hover:bg-yellow-50 text-lg transform hover:scale-105">
+              Plastic, VMC & Metalworking
+              <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+          </div>
         </div>
       </div>
       
