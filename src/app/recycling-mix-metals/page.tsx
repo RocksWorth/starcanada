@@ -1,4 +1,44 @@
 import { getCategoryBySlug } from '@/lib/catalog';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Recycling Mix Metals - Bulk Metal Supply & Trading',
+  description: 'High-quality recycling mix metals including ferrous and non-ferrous materials. Bulk metal supply with consistent grading, reliable logistics, and competitive pricing. Containerized shipping worldwide.',
+  keywords: [
+    'recycling metals',
+    'metal scrap',
+    'ferrous metals',
+    'non-ferrous metals',
+    'steel scrap',
+    'aluminum scrap',
+    'copper scrap',
+    'brass scrap',
+    'stainless steel',
+    'bulk metal supply',
+    'metal trading',
+    'recycling industry',
+    'metal grading',
+    'containerized shipping',
+    'global metal trading'
+  ],
+  openGraph: {
+    title: 'Recycling Mix Metals - Bulk Metal Supply & Trading',
+    description: 'High-quality recycling mix metals with consistent grading and reliable logistics. Bulk supply of ferrous and non-ferrous materials.',
+    url: 'https://starcanada.ca/recycling-mix-metals',
+    type: 'website',
+    images: [
+      {
+        url: '/StarCanadaImages/Big supplier of Recycling Mix Metals/WhatsApp Image 2025-09-23 at 19.12.15.jpeg',
+        width: 1200,
+        height: 630,
+        alt: 'Recycling Mix Metals - Star Canada International',
+      },
+    ],
+  },
+  alternates: {
+    canonical: '/recycling-mix-metals',
+  },
+};
 
 export default function RecyclingMixMetalsPage() {
   const category = getCategoryBySlug('recycling-mix-metals');

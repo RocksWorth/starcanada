@@ -1,4 +1,44 @@
 import { getCategoryBySlug } from '@/lib/catalog';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Plastic Molding, VMCs & Metalworking Machines - Manufacturing Equipment',
+  description: 'High-precision manufacturing equipment including plastic injection molding machines, vertical machining centers (VMCs), and metalworking machinery. All machines tested and verified before shipment.',
+  keywords: [
+    'plastic molding machines',
+    'injection molding',
+    'VMC machines',
+    'vertical machining centers',
+    'CNC machines',
+    'metalworking equipment',
+    'manufacturing machines',
+    'plastic injection molding',
+    'blow molding',
+    'compression molding',
+    'CNC mills',
+    'CNC lathes',
+    'EDM machines',
+    'metal forming',
+    'precision machining'
+  ],
+  openGraph: {
+    title: 'Plastic Molding, VMCs & Metalworking Machines - Manufacturing Equipment',
+    description: 'High-precision manufacturing equipment including plastic injection molding, VMCs, and metalworking machines. All tested and verified.',
+    url: 'https://starcanada.ca/machines-plastic-vmc-metalworking',
+    type: 'website',
+    images: [
+      {
+        url: '/StarCanadaImages/Machines like plastic molding vmcs and metal working/WhatsApp Image 2025-09-23 at 18.54.13.jpeg',
+        width: 1200,
+        height: 630,
+        alt: 'Manufacturing Machines - Star Canada International',
+      },
+    ],
+  },
+  alternates: {
+    canonical: '/machines-plastic-vmc-metalworking',
+  },
+};
 
 export default function MachinesPlasticVmcMetalworkingPage() {
   const category = getCategoryBySlug('machines-plastic-vmc-metalworking');

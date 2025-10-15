@@ -8,9 +8,30 @@ import ImageGallerySection from './components/ImageGallerySection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 
+// Structured Data for SEO
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Star Canada International",
+  "url": "https://starcanada.ca",
+  "description": "Leading global trader of recycling mix metals, construction machinery, and industrial equipment since 2005.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://starcanada.ca/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+};
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData),
+        }}
+      />
+      <main className="flex min-h-screen flex-col">
       {/* Navigation */}
       <Navbar />
       
@@ -38,5 +59,6 @@ export default function Home() {
       {/* Footer */}
       <Footer />
     </main>
+    </>
   );
 }

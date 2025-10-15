@@ -1,4 +1,44 @@
 import { getCategoryBySlug } from '@/lib/catalog';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Construction Machinery & Industrial Equipment - Heavy Equipment Trading',
+  description: 'Heavy construction equipment, industrial engines, generators, and machinery parts. All equipment inspected, tested, and documented. Excavators, bulldozers, cranes, and power equipment available.',
+  keywords: [
+    'construction equipment',
+    'heavy machinery',
+    'excavators',
+    'bulldozers',
+    'cranes',
+    'loaders',
+    'industrial engines',
+    'generators',
+    'diesel engines',
+    'construction machinery',
+    'industrial equipment',
+    'machinery parts',
+    'power equipment',
+    'earthmoving equipment',
+    'construction industry'
+  ],
+  openGraph: {
+    title: 'Construction Machinery & Industrial Equipment - Heavy Equipment Trading',
+    description: 'Heavy construction equipment and industrial machinery. Excavators, bulldozers, cranes, engines, and generators with verified condition.',
+    url: 'https://starcanada.ca/construction-industrial-supplies',
+    type: 'website',
+    images: [
+      {
+        url: '/StarCanadaImages/Construction Machinery and Engine and  Industrial supplies/WhatsApp Image 2025-09-23 at 19.27.14.jpeg',
+        width: 1200,
+        height: 630,
+        alt: 'Construction Machinery - Star Canada International',
+      },
+    ],
+  },
+  alternates: {
+    canonical: '/construction-industrial-supplies',
+  },
+};
 
 export default function ConstructionIndustrialSuppliesPage() {
   const category = getCategoryBySlug('construction-industrial-supplies');
